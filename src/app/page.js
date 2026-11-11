@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import Hero from "./component/Hero";
 
 const page = () => {
   return (
-    <div>
-      page
-    </div>
+    <main className="flex-1">
+      <Hero />
+    </main>
   );
 };
 
