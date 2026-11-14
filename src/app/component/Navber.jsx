@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useSession, signOut } from "@/lib/auth-client";
 
 const navLinks = [
+  { label: "Home", href: "/" },
   { label: "Browse Jobs", href: "/jobs" },
   { label: "Company", href: "/company" },
   { label: "Pricing", href: "/pricing" },
@@ -14,6 +15,7 @@ const navLinks = [
 
 const Navbar = ({ user: userProp = null, onLogout }) => {
   const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
 
@@ -40,6 +42,11 @@ const Navbar = ({ user: userProp = null, onLogout }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  // Hide the navbar on dashboard pages (after all hooks)
+  if (pathname?.startsWith("/dashboard")) {
+    return null;
+  }
 
   const getInitials = (name) => {
     return (

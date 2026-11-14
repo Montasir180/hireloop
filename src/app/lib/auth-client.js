@@ -1,7 +1,12 @@
 import { createAuthClient } from "better-auth/react";
 
-// Same domain as the app, so no baseURL needed —
-// it automatically hits /api/auth on the current origin.
-export const authClient = createAuthClient();
+export const authClient = createAuthClient({
+  baseURL: process.env.NEXT_PUBLIC_APP_URL,
+});
 
-export const { signIn, signUp, signOut, useSession } = authClient;
+export const {
+  signIn,
+  signUp,
+  signOut,
+  useSession,
+} = authClient;
