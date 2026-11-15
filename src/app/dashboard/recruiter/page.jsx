@@ -34,7 +34,7 @@ const navigation = [
   },
   {
     name: "Add Job",
-    href: "/dashboard/recruiter/jobs/new",
+    href: "/dashboard/recruiter/add_jobs",
     icon: Plus,
   },
   {
@@ -173,12 +173,8 @@ function Sidebar({ user, mobileOpen, setMobileOpen, onLogout }) {
             const active =
               item.name === "Dashboard"
                 ? pathname === item.href
-                : item.name === "Manage Jobs"
-                  ? pathname === item.href ||
-                    (pathname.startsWith(`${item.href}/`) &&
-                      pathname !== "/dashboard/recruiter/jobs/new")
-                  : pathname === item.href ||
-                    pathname.startsWith(`${item.href}/`);
+                : pathname === item.href ||
+                  pathname.startsWith(`${item.href}/`);
 
             return (
               <Link
@@ -638,7 +634,7 @@ export default function RecruiterDashboard() {
             {/* FLOATING ADD BUTTON */}
 
             <Link
-              href="/dashboard/recruiter/jobs/new"
+             href="/dashboard/recruiter/add_jobs"
               aria-label="Create new job"
               className="fixed bottom-6 right-6 z-30 flex h-[48px] w-[48px] items-center justify-center rounded-full bg-white text-[#111111] shadow-lg transition hover:scale-105 hover:bg-[#CEFB58]"
             >
